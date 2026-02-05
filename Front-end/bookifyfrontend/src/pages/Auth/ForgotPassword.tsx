@@ -25,15 +25,12 @@ const ForgotPassword: React.FC = () => {
     try {
       setLoading(true);
       await forgotPassword(email);
-      setSuccessMessage(
-        "Un lien de réinitialisation a été envoyé à votre email.",
-      );
+      navigate("/verify-code", { state: { email } });
     } catch (error) {
       setErrorMessage("Email introuvable. Veuillez réessayer.");
     } finally {
       setLoading(false);
     }
-    navigate("/verify-code", { state: { email } });
   };
 
   return (
@@ -59,7 +56,7 @@ const ForgotPassword: React.FC = () => {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block mb-2 ml-1 text-sm font-medium text-gray-700">
               Email
             </label>
             <input
@@ -73,10 +70,17 @@ const ForgotPassword: React.FC = () => {
           </div>
 
           <button
-            type="submit"
+            type="submit" 
             disabled={loading}
-            className="w-full bg-gradient-to-r from-[#0059B2] to-[#004a96] text-white py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50"
-          >
+            className={`w-full bg-gradient-to-r from-[#0059B2] to-[#004a96]
+            hover:from-[#004a96] hover:to-[#0059B2]
+            text-white py-3.5 rounded-xl font-semibold
+            transition-all duration-300 shadow-lg hover:shadow-xl
+            transform hover:scale-[1.02] active:scale-[0.98]
+            text-sm md:text-base
+            ${loading ? "opacity-60 cursor-not-allowed" : ""}
+          `}
+          >    
             {loading ? "Envoi en cours..." : "Envoyer le lien"}
           </button>
 

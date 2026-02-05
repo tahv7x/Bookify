@@ -135,7 +135,7 @@ const PrestataireRegister: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen relative overflow-hidden  flex justify-center items-start md:items-center pt-32 md:pt-0 transition-all duration-500 ease-out">
       {/* Logo - Top Left */}
       <div className="absolute top-[50px] right-5 z-20">
         <Link to="/">
@@ -159,7 +159,7 @@ const PrestataireRegister: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Side - Preview Card (Plus grand) */}
             <div className="hidden lg:flex justify-center items-center">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full h-[420px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[600px] max-w-3xl">
+              <div className="relative rounded-2xl  md:mt-16 overflow-hidden shadow-2xl w-full h-[420px] sm:h-[480px] md:h-[520px] lg:h-[560px] xl:h-[600px] max-w-3xl">
                 {/* Background Image with Overlay */}
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
@@ -327,8 +327,8 @@ const PrestataireRegister: React.FC = () => {
             </div>
 
             {/* Right Side - Registration Form */}
-            <div className="w-full flex justify-center">
-              <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 w-full max-w-md lg:max-w-lg">
+            <div className="w-full flex justify-center ">
+              <div className="bg-white md:mt-16  md:h-[580px]  rounded-2xl md:rounded-3xl  shadow-2xl p-5 sm:p-8 md:pl-10 md:pr-10 md:pt-6 md:pb-6 w-full max-w-md lg:max-w-lg">
                 {/* Title */}
                 <div className="text-center mb-6 md:mb-8">
                   <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
@@ -349,11 +349,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("fullName")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Nom complet"
-                      className={`w-full px-4 py-3 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "fullName"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                         ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                   </div>
@@ -368,11 +368,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("email")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Adresse Email"
-                      className={`w-full px-4 py-3 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "email"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                          ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                   </div>
@@ -387,11 +387,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("phone")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Numéro de Téléphone"
-                      className={`w-full px-4 py-3 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "phone"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                          ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                   </div>
@@ -406,11 +406,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("address")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Adresse"
-                      className={`w-full px-4 py-3 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "address"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                          ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                   </div>
@@ -425,11 +425,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("password")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Mots de passe"
-                      className={`w-full px-4 py-3 pr-12 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "password"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                          ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                     <button
@@ -485,11 +485,11 @@ const PrestataireRegister: React.FC = () => {
                       onFocus={() => setFocusedInput("confirmPassword")}
                       onBlur={() => setFocusedInput(null)}
                       placeholder="Confirmer le mot de passe"
-                      className={`w-full px-4 py-3 pr-12 border-2 ${
+                      className={`w-full px-4 py-3 md:py-2 sm:px-4 sm:py-3 border-2 ${
                         focusedInput === "confirmPassword"
-                          ? "border-[#0059B2] bg-blue-50"
-                          : "border-gray-200 bg-gray-50"
-                      } rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-sm md:text-base`}
+                          ? "border-[#0059B2] ring-4 sm:ring-4 ring-blue-500/10 "
+                          : "border-gray-200"
+                      } rounded-lg sm:rounded-xl outline-none transition-all duration-300 placeholder-gray-400 text-xs sm:text-sm md:text-base`}
                       required
                     />
                     <button
@@ -542,7 +542,7 @@ const PrestataireRegister: React.FC = () => {
                     type="submit"
                     disabled={loading}
                     onClick={handleSubmit}
-                    className="w-full bg-gradient-to-r from-[#28282B] to-[#1f1f22] hover:from-[#1f1f22] hover:to-[#28282B] text-white py-3.5 rounded-xl font-semibold  transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed text-sm md:text-base"
+                    className="w-full bg-gradient-to-r md:py-3 from-[#28282B] to-[#1f1f22] hover:from-[#1f1f22] hover:to-[#28282B] text-white py-3.5 rounded-xl font-semibold  transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed text-sm md:text-base"
                   >
                     {loading ? "Création du compte..." : "Créer mon compte"}
                   </button>

@@ -52,8 +52,18 @@ const RoleCard: React.FC<RoleCardProps> = ({
       )}
 
       <div
-        className={`${bgColor} ${hoverBgColor} space-y-5  text-white rounded-3xl p-8 shadow-2xl transition-all duration-500 transform ${isHovered ? "scale-105 shadow-3xl" : ""} min-h-[120px] flex flex-col justify-between relative overflow-hidden w-[350px] mx-auto`}
+        className={`${bgColor} ${hoverBgColor}
+        space-y-4 text-white rounded-3xl
+        p-5 sm:p-6 md:p-8
+        shadow-2xl transition-all duration-500
+        transform md:hover:scale-105
+        min-h-[120px]
+        flex flex-col justify-between
+        relative overflow-hidden
+        w-full max-w-[350px] sm:max-w-[320px] md:max-w-[350px]
+        mx-auto`}
       >
+
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16"></div>
         <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full -ml-20 -mb-20"></div>

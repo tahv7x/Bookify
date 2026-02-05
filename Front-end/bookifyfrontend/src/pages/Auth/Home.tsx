@@ -38,14 +38,14 @@ const Home: React.FC = () => {
 
       <Navbar />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-8 pt-32 pb-20">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">
         {/* Hero Section */}
         <div className="w-full flex flex-col items-center justify-center text-center mb-10">
           <BlurText
             animateBy="words"
             delay={120}
             direction="top"
-            className="text-5xl font-bold text-black mb-2"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black mb-2"
           >
             Simplifiez Votre rendez-Vous
           </BlurText>
@@ -53,7 +53,7 @@ const Home: React.FC = () => {
             animateBy="words"
             delay={220}
             direction="top"
-            className="text-3xl text-[#0059B2] font-bold"
+            className="text-xl sm:text-2xl lg:text-3xl text-[#0059B2] font-bold"
           >
             Bienvenue Sur Bookify
           </BlurText>
