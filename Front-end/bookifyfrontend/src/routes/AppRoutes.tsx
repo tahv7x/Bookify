@@ -6,6 +6,7 @@ import PrestataireRegister from "../pages/Auth/PrestataireRegister";
 import ForgotPassword from "../pages/Auth/ForgotPassword";
 import VerifyCode from "../pages/Auth/VerifyCode";
 import ResetPassword from "../pages/Auth/ResetPassword";
+
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Home />} />

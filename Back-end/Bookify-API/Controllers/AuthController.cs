@@ -94,5 +94,35 @@ namespace Bookify_API.Controllers
                 }
             });
         }
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
+        {
+            var user = await context.Utilisateurs.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (user == null)
+                return BadRequest("Email Non trouvé");
+            var code = new Random().Next(100000, 999999).ToString();
+
+            user.ResetPasswordCode = code;
+            user.ResetCodeExpiry = DateTime.Now.AddMinutes(10);
+
+            await context.SaveChangesAsync();
+
+            return Ok("Code de vérification envoyé A ton Email")
+
+        }
+        [HttpPost("verify-reset-code")]
+        public async Task<IActionResult> VerifyResetCode(VerifyCodeDto dto)
+        {
+            var user = await context.Utilisateurs.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+                return BadRequest("Utilisateur Introuvable");
+            if(user.ResetPasswordCode != dto.Code || user.ResetCodeExpiry < DateTime.Now)
+            {
+                return BadRequest("Code Invalide ou expire");
+            }
+
+            return Ok("Code Validé");
+        }
     }
 }

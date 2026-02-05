@@ -11,7 +11,7 @@ const ADRESSES_AUTORISEES = [
   "Tanger",
   "Agadir",
   "Fes",
-  "Oujda"
+  "Oujda",
 ];
 const PrestataireRegister: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -53,8 +53,10 @@ const PrestataireRegister: React.FC = () => {
       return;
     }
     const phoneRegex = /^[0-9]{10}$/;
-    if(!phoneRegex.test(formData.telephone)){
-      setErrorMessage("Le numéro de téléphone doit contenir exactement 10 chiffres.");
+    if (!phoneRegex.test(formData.telephone)) {
+      setErrorMessage(
+        "Le numéro de téléphone doit contenir exactement 10 chiffres.",
+      );
       return;
     }
     let adresseFinale = formData.address?.trim();
@@ -65,7 +67,7 @@ const PrestataireRegister: React.FC = () => {
       setLoading(true);
       await registerPrestataire({
         ...formData,
-        address: adresseFinale
+        address: adresseFinale,
       });
       console.log(formData);
       navigate("/login");
