@@ -14,17 +14,17 @@ const Login: React.FC = () => {
     const role = JSON.parse(user).role;
     if(role === "ADMIN") navigate("/Admin/Accueil");
     else if (role === "PRESTATAIRE") navigate("/Prestataire/Accueil");
-    else if (role === "CLIENT") navigate("/Client/Accueil");
+    else if (role === "CLIENT")  navigate("/Dashboard-Client");;
     }
-  },[]);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [focusedInput, setFocusedInput] = useState<string | null>(null);
-  const handleSubmit = async (e: React.FormEvent) => {
+    },[]);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [focusedInput, setFocusedInput] = useState<string | null>(null);
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
     setSuccessMessage("");
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
       setSuccessMessage("Connexion réussie !");
       const role = data.user.role;
       if (role === "CLIENT") {
-        navigate("/Client/Accueil");
+        navigate("/Dashboard-Client");
       } else if (role == "PRESTATAIRE") {
         navigate("/Prestataire/Accueil");
       } else if (role == "ADMIN") {
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
       <AuthBackground/>
       {/* Logo - Top Left */}
       <div className="absolute top-[60px] left-5 z-20">
-        <Link to="/Login">
+        <Link to="/Home-Client">
           <img
             src={logo}
             alt="Logo"
