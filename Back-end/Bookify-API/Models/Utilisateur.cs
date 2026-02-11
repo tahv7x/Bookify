@@ -40,6 +40,14 @@ public partial class Utilisateur
     [Column("creerA", TypeName = "datetime")]
     public DateTime? CreerA { get; set; }
 
+    [Column("resetCode")]
+    [StringLength(6)]
+    public string? ResetPasswordCode { get; set; }
+
+    [Column("resetCodeExpiry",TypeName = "datetime")]
+    public DateTime? ResetCodeExpiry { get; set; }
+
+
     [InverseProperty("IdUtilisateurNavigation")]
     public virtual ICollection<Fichier> Fichiers { get; set; } = new List<Fichier>();
 

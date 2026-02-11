@@ -10,6 +10,7 @@ import DashboardClient from "../pages/Client/Dashboard";
 import HomeC from "../pages/Client/Home";
 import MesRendezVous from "../pages/Client/MesRendezVous";
 import Profils from "../pages/Client/Profils";
+
 const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Home />} />
