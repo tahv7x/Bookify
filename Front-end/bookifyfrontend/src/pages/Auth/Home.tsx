@@ -39,7 +39,7 @@ const Home: React.FC = () => {
       <Navbar />
 
       <main className="relative z-10 max-w-7xl mx-auto px-6 pt-24 md:pt-32 pb-16">
-        {/* Hero Section */}
+        {/* Hero Section */} 
         <div className="w-full flex flex-col items-center justify-center text-center mb-10">
           <BlurText
             animateBy="words"

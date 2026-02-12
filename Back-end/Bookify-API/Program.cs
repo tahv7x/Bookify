@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using Bookify_API.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +43,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         )
     )
 );
+builder.Services.AddScoped<EmailService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",

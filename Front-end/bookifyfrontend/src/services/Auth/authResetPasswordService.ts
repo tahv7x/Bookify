@@ -1,10 +1,10 @@
-// services/Auth/authResetPasswordService.ts
 import api from "../api";
 
-export const resetPassword = async (email: string, password: string) => {
+export const resetPassword = async (email: string,code:string, newPassword: string) => {
   const res = await api.post("/auth/reset-password", {
     email,
-    password,
+    code,
+    newPassword,
   });
   return res.data;
 };

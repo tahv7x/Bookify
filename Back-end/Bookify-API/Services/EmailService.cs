@@ -5,33 +5,39 @@ namespace Bookify_API.Services
 {
     public class EmailService
     {
-        private readonly IConfiguration config;
+        private readonly IConfiguration _config;
 
         public EmailService(IConfiguration config)
         {
-            this.config = config;
+            _config = config;
         }
-        public void Send(string toEmail,string code)
+
+        public void Send(string toEmail, string subject, string body)
         {
-            var smtpClient = new SmtpClient(config["Email:Smtp"], int.Parse(config["Email:Port"]))
+            var settings = _config.GetSection("EmailSettings");
+
+            var smtp = new SmtpClient
             {
+                Host = settings["SmtpServer"],
+                Port = int.Parse(settings["Port"]),
+                EnableSsl = true,
                 Credentials = new NetworkCredential(
-                    config["Email:Username"],
-                    config["Email:Password"]
-                ),
-                EnableSsl = true
+                    settings["Username"],
+                    settings["Password"]
+                )
             };
 
             var message = new MailMessage
             {
-                From = new MailAddress(config["Email:From"]),
-                Subject = "Réinitialisation du mot de passe",
-                Body = $"Votre code de réinitialisation est : {code}",
+                From = new MailAddress(settings["From"], "Bookify"),
+                Subject = subject,
+                Body = body,
                 IsBodyHtml = false
             };
+
             message.To.Add(toEmail);
 
-            smtpClient.Send(message);
+            smtp.Send(message);
         }
     }
 }

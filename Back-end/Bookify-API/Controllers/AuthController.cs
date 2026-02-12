@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using BCrypt.Net;
 using Bookify_API.DTOs;
 using Microsoft.AspNetCore.Identity;
+using Bookify_API.Services;
 
 namespace Bookify_API.Controllers
 {
@@ -18,11 +19,13 @@ namespace Bookify_API.Controllers
     {
         private readonly AppDbContext context;
         private readonly IConfiguration configuration;
+        private readonly EmailService emailService;
 
-        public AuthController(AppDbContext context, IConfiguration config)
+        public AuthController(AppDbContext context, IConfiguration config,EmailService em)
         {
             this.context = context;
             this.configuration = config;
+            this.emailService = em;
         }
 
         private string GenerateJwtToken(Utilisateur user, IConfiguration config)
@@ -94,6 +97,7 @@ namespace Bookify_API.Controllers
                 }
             });
         }
+
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordDto dto)
         {
@@ -108,8 +112,12 @@ namespace Bookify_API.Controllers
 
             await context.SaveChangesAsync();
 
-            return Ok("Code de vérification envoyé A ton Email")
-
+            emailService.Send(
+                user.Email,
+                "Code de réinitialisation du mot de passe",
+                $"Votre code de vérification est : {code}"
+            );
+            return Ok("Code de verification envoyé Par Email ");
         }
         [HttpPost("verify-reset-code")]
         public async Task<IActionResult> VerifyResetCode(VerifyCodeDto dto)
@@ -124,5 +132,24 @@ namespace Bookify_API.Controllers
 
             return Ok("Code Validé");
         }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto dto)
+        {
+            var user = await context.Utilisateurs
+                .FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+            if (user == null)
+                return BadRequest("Utilisateur Introuvable");
+            if (user.ResetPasswordCode != dto.Code || user.ResetCodeExpiry < DateTime.Now)
+                return BadRequest("Code Invalide ou expiré");
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+            user.ResetPasswordCode = null;
+            user.ResetCodeExpiry = null;
+
+            await context.SaveChangesAsync();
+
+            return Ok("Mot de passe modifié avec succès");
+        }
+
     }
 }
