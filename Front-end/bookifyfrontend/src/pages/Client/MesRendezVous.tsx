@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Dashboard/Navbar';
-import TopBar from '../../components/Dashboard/TopBar';
+import Navbar from '../../components/Client/Navbar';
+import TopBar from '../../components/Client/TopBar';
 
 
 

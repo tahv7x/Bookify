@@ -23,20 +23,47 @@ const RoleCard: React.FC<RoleCardProps> = ({
   const isClient = type === "client";
   const bgColor = isClient ? "bg-[#0059B2]" : "bg-[#28282B]";
   const hoverBgColor = isClient ? "hover:bg-[#004a96]" : "hover:bg-[#1f1f22]";
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const handleMouseEnter = () => {
     setIsHovered(true);
 
+    timeoutRef.current = setTimeout(() => {
       if (cardRef.current) {
-        cardRef.current.scrollIntoView({
-          behavior: "smooth",  // smooth scroll
-          block: "center",     // scroll f center screen
-        });
+        const rect = cardRef.current.getBoundingClientRect();
+
+        const offset = 40; 
+        const isAbove = rect.top < 0;
+        const isBelow = rect.bottom > window.innerHeight;
+
+        if (isAbove) {
+          window.scrollBy({
+            top: rect.top - offset,
+            behavior: "smooth",
+          });
+        } else if (isBelow) {
+          window.scrollBy({
+            top: rect.bottom - window.innerHeight + offset,
+            behavior: "smooth",
+          });
+        }
       }
-    };
+    }, 180);
+
+  };
+
+
+
+
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  setIsHovered(false);
+
+  if (timeoutRef.current) {
+    clearTimeout(timeoutRef.current);
+  }
+};
+
 
   return (
     <div
@@ -55,7 +82,7 @@ const RoleCard: React.FC<RoleCardProps> = ({
         className={`${bgColor} ${hoverBgColor}
         space-y-4 text-white rounded-3xl
         p-5 sm:p-6 md:p-8
-        shadow-2xl transition-all duration-500
+        shadow-2xl transition-all duration-180 ease-out
         transform md:hover:scale-105
         min-h-[120px]
         flex flex-col justify-between
@@ -75,7 +102,7 @@ const RoleCard: React.FC<RoleCardProps> = ({
 
           {/* Container for everything that appears on hover */}
           <div
-            className={`transition-all duration-500 overflow-hidden ${
+            className={`transition-all duration-180 overflow-hidden ${
               isHovered ? "max-h-[400px] opacity-100 mb-6" : "max-h-0 opacity-0"
             }`}
           >

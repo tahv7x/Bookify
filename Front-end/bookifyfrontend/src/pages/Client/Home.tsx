@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {  Stethoscope,Brush  , Hospital , Brain, PawPrint, Paintbrush , Sparkles, Scissors, Scale, Briefcase, Dumbbell, Car, Wrench, Plug ,Calendar, Shield, Star, ChevronRight, Clock, MapPin } from 'lucide-react';
-import Navbar from '../../components/Dashboard/Navbar';
-import TopBar from '../../components/Dashboard/TopBar';
+import { Hospital , Sparkles,  Briefcase, Wrench, Calendar, Shield, Star, ChevronRight, Clock, MapPin } from 'lucide-react';
+import Navbar from '../../components/Client/Navbar';
+import TopBar from '../../components/Client/TopBar';
+import Footer from '../../components/Client/Footer';
 
 const Home: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,128 +17,58 @@ const Home: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  const scrollToSection = (id: string) => {
+  const section = document.getElementById(id);
+    if (section) {
+     const yOffset = -100; 
+    const y =
+      section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    }
+  };
+
 
   const categories = [
-  { name: 'Médecin généraliste', icon: Stethoscope },
-  { name: 'Dentiste', icon: Hospital },
-  { name: 'Psychologue', icon: Brain },
-  { name: 'Vétérinaire', icon: PawPrint },
-  { name: 'Coiffeur / Barbier', icon: Scissors },
-  { name: 'Maquilleur(se) professionnel(le)', icon: Brush   },
-  { name: 'Prothésiste ongulaire', icon: Paintbrush  },
-  { name: 'Avocat', icon: Scale },
-  { name: 'Consultant', icon: Briefcase },
-  { name: 'Coach (sportif, pro, vie)', icon: Dumbbell },
-  { name: 'Mécanicien automobile', icon: Car },
-  { name: 'Plombier', icon: Wrench },
-  { name: 'Électricien', icon: Plug },
-  { name: 'Nettoyage', icon: Sparkles }
+  { name: 'Sante & medical', icon: Hospital },
+  { name: 'Beaute & Bien etre', icon: Sparkles },
+  { name: 'Services profesionnels', icon: Briefcase },
+  { name: 'Service techniques', icon: Wrench },
+
 ];
 
 
 
 const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
-  'Médecin généraliste': [
-    { title: 'Consultation Générale', img: 'https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&h=400&fit=crop' },
-    { title: 'Suivi Médical', img: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=400&fit=crop' },
-    { title: 'Certificat Médical', img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop' },
-    { title: 'Visite à Domicile', img: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop' }
+  'Sante & medical': [
+    { title: 'Médecin généraliste', img: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&h=400&fit=crop' },
+    { title: ' Dentiste', img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&h=400&fit=crop' },
+    { title: 'Psychologue', img: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=400&fit=crop' },
+    { title: 'Vétérinaire', img: 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=600&h=400&fit=crop'  }
   ],
 
-  Dentiste: [
-    { title: 'Détartrage', img: 'https://images.unsplash.com/photo-1609840114035-3c981407e31f?w=600&h=400&fit=crop' },
-    { title: 'Soins Dentaires', img: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&h=400&fit=crop' },
-    { title: 'Blanchiment', img: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&h=400&fit=crop' },
-    { title: 'Extraction Dentaire', img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&h=400&fit=crop' }
+  'Beaute & Bien etre': [
+    { title: 'Coiffeur / Barbier', img: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop' },
+    { title: 'Maquilleur', img: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=400&fit=crop' },
+    { title: 'Prothésiste ongulaire', img: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&h=400&fit=crop' }
   ],
 
-  Psychologue: [
-    { title: 'Thérapie Individuelle', img: 'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600&h=400&fit=crop' },
-    { title: 'Gestion du Stress', img: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=400&fit=crop' },
-    { title: 'Coaching Personnel', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=400&fit=crop' },
-    { title: 'Thérapie de Couple', img: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=400&fit=crop' }
+  'Services profesionnels': [
+    { title: 'Avocat', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop' },
+    { title: 'Consultant', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop' },
+    { title: 'Coach (sportif, pro, vie)', img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop' },
   ],
 
-  Vétérinaire: [
-    { title: 'Consultation Animaux', img: 'https://images.unsplash.com/photo-1530041539828-114de669390e?w=600&h=400&fit=crop' },
-    { title: 'Vaccination', img: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=400&fit=crop' },
-    { title: 'Soins Généraux', img: 'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=600&h=400&fit=crop' },
-    { title: 'Urgences Vétérinaires', img: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop' }
+  'Service techniques': [
+    { title: 'Mecanicien', img: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&h=400&fit=crop' },
+    { title: 'Plombier', img: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=400&fit=crop' },
+    { title: 'Électricien', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop' },
+    { title: 'Nettoyage', img: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=600&h=400&fit=crop' }
   ],
 
-  'Coiffeur / Barbier': [
-    { title: 'Coupe Homme', img: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=400&fit=crop' },
-    { title: 'Coupe Femme', img: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop' },
-    { title: 'Barbe & Styling', img: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=400&fit=crop' },
-    { title: 'Coloration', img: 'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=600&h=400&fit=crop' }
-  ],
-
-  'Maquilleur(se) professionnel(le)': [
-    { title: 'Maquillage Mariée', img: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop' },
-    { title: 'Maquillage Soirée', img: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=400&fit=crop' },
-    { title: 'Maquillage Shooting', img: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=400&fit=crop' },
-    { title: 'Maquillage Naturel', img: 'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=400&fit=crop' }
-  ],
-
-  'Prothésiste ongulaire': [
-    { title: 'Pose Ongles Gel', img: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=400&fit=crop' },
-    { title: 'Manucure', img: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=600&h=400&fit=crop' },
-    { title: 'Nail Art', img: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=600&h=400&fit=crop' },
-    { title: 'Remplissage Ongles', img: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=600&h=400&fit=crop' }
-  ],
-
-  Avocat: [
-    { title: 'Conseil Juridique', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop' },
-    { title: 'Droit de la Famille', img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop' },
-    { title: 'Droit du Travail', img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=400&fit=crop' },
-    { title: 'Rédaction de Contrats', img: 'https://images.unsplash.com/photo-1450101215322-bf5cd27642fc?w=600&h=400&fit=crop' }
-  ],
-
-  Consultant: [
-    { title: 'Consulting Business', img: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&h=400&fit=crop' },
-    { title: 'Stratégie', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop' },
-    { title: 'Organisation', img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop' },
-    { title: 'Audit & Analyse', img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop' }
-  ],
-
-  'Coach (sportif, pro, vie)': [
-    { title: 'Coaching Sportif', img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop' },
-    { title: 'Coaching de Vie', img: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=400&fit=crop' },
-    { title: 'Coaching Professionnel', img: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=400&fit=crop' },
-    { title: 'Suivi & Motivation', img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop' }
-  ],
-
-  'Mécanicien automobile': [
-    { title: 'Réparation Auto', img: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600&h=400&fit=crop' },
-    { title: 'Vidange', img: 'https://images.unsplash.com/photo-1625047509252-d23bfe513056?w=600&h=400&fit=crop' },
-    { title: 'Diagnostic', img: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=600&h=400&fit=crop' },
-    { title: 'Frein & Suspension', img: 'https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&h=400&fit=crop' }
-  ],
-
-  Plombier: [
-    { title: 'Dépannage Plomberie', img: 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=400&fit=crop' },
-    { title: 'Installation Sanitaire', img: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=600&h=400&fit=crop' },
-    { title: 'Réparation Fuite', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop' },
-    { title: 'Débouchage', img: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=400&fit=crop' }
-  ],
-
-  Électricien: [
-    { title: 'Installation Électrique', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop' },
-    { title: 'Dépannage', img: 'https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=600&h=400&fit=crop' },
-    { title: 'Mise aux Normes', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop' },
-    { title: 'Éclairage & Prises', img: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=600&h=400&fit=crop' }
-  ],
-
-  Nettoyage: [
-    { title: 'Nettoyage Maison', img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop' },
-    { title: 'Nettoyage Tapis', img: 'https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=600&h=400&fit=crop' },
-    { title: 'Débarras', img: 'https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=600&h=400&fit=crop' },
-    { title: 'Nettoyage Vitres', img: 'https://images.unsplash.com/photo-1581578968446-a821e2f3f6e9?w=600&h=400&fit=crop' }
-  ]
 };
-
-
-
   const specialists = [
     {
       name: 'Dr. Youssef Alami',
@@ -204,12 +135,25 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
     }
   ];
 
-  const stats = [
-    { number: '10K+', label: 'Patients Satisfaits' },
-    { number: '500+', label: 'Spécialistes' },
-    { number: '50K+', label: 'Rendez-vous' },
-    { number: '4.9', label: 'Note Moyenne' }
-  ];
+  const [stats, setStats] = useState([
+    { number: 0, label: 'Clients Actifs' },
+    { number: 0, label: 'Spécialistes' },
+    { number: 0, label: 'Rendez-vous' },
+    { number: 0, label: 'Note Moyenne' }
+  ]);
+  useEffect(() => {
+    fetch("http://localhost:5000/api/stats")
+      .then(res => res.json())
+      .then(data => {
+        setStats([
+          { number: data.clients, label: 'Clients Actifs' },
+          { number: data.specialists, label: 'Spécialistes' },
+          { number: data.appointments, label: 'Rendez-vous' },
+          { number: data.averageRating, label: 'Note Moyenne' }
+        ]);
+      })
+      .catch(err => console.error(err));
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#F4F7FE]">
@@ -419,17 +363,26 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
         </section>
 
         {/* Categories */}
-        <section className="py-8 px-7 sm:px-6 lg:px-8 bg-gray-50 border-b border-gray-200">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide">
+        <section id="Categories" className="py-8 px-7 sm:px-6 lg:px-8 bg-gray-50 border-b border-gray-200">
+          <p className="text-3xl sm:text-4xl lg:text-5xl font-bold heading-font text-gray-900 leading-tight text-center mb-3">
+            Pour ton Premier{' '}
+            <span className="text-gradient">Rendez‑Vous</span>
+          </p>
+          <p className=" text-center mb-8 text-lg sm:text-xl text-gray-600">
+            Sélectionnez une catégorie pour découvrir les services disponibles
+          </p>
+
+            <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 overflow-x-auto pb-2 scrollbar-hide">
               {categories.map((cat, idx) => (
                 <button
                     key={idx}
                     onClick={() => setSelectedCategory(cat.name)}
                     className={`flex flex-col items-center justify-center gap-2
-                      px-3 sm:px-4 py-3 rounded-lg transition-all
+                      px-3 sm:px-4 py-3 rounded-lg transition-all duration-300 ease-in-out
                       whitespace-normal text-center
                       min-w-[80px] sm:min-w-[100px]
+                      hover:scale-105 hover:shadow-md
                       ${
                         selectedCategory === cat.name
                           ? 'text-[#0059B2]'
@@ -437,19 +390,16 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
                       }`}
                   >
                     {/* Icon */}
-                    <span className="flex items-center justify-center">
+                    <span className="flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       <cat.icon size={28} className="sm:w-7 sm:h-7" />
                     </span>
-
-
-
                     {/* Text */}
                     <span className="text-xs sm:text-sm font-medium leading-tight break-words">
                       {cat.name}
                     </span>
 
                     {selectedCategory === cat.name && (
-                      <div className="w-full h-1 bg-[#0059B2] rounded-full mt-1"></div>
+                      <div className="w-full h-1 bg-[#0059B2] rounded-full mt-1 transition-all duration-300 animate-scale-in"></div>
                     )}
                   </button>
 
@@ -459,22 +409,33 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
         </section>
 
         {/* Service Cards Section - Dynamic based on selected category */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <section className="py-1 px-4 sm:px-6 lg:px-8 bg-gray-50">
+            <div className="max-w-7xl mx-auto">
+              <div
+                key={selectedCategory}
+                className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"
+              >
               {servicesData[selectedCategory]?.map((service, idx) => (
                 <div 
                   key={idx}
-                  className="card-hover group relative overflow-hidden rounded-2xl sm:rounded-3xl cursor-pointer"
-                  style={{ opacity: 0, animation: 'fadeInUp 0.2s forwards', animationDelay: `${0.1 + idx * 0.1}s` }}
+                 className="group relative overflow-hidden rounded-2xl sm:rounded-3xl cursor-pointer 
+                  transform transition-all duration-500 ease-out 
+                  hover:-translate-y-3 hover:scale-[1.03] active:scale-95"
+                  style={{
+                    opacity: 0,
+                    animation: 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    animationDelay: `${idx * 0.15}s`
+                  }}
                 >
                   <div className="aspect-[4/3] relative">
                     <img 
                       src={service.img}
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t 
+                      from-black/70 via-black/30 to-transparent 
+                      opacity-80 group-hover:opacity-100 transition-all duration-500"></div>
                     <h3 className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 text-white text-lg sm:text-2xl font-bold">
                       {service.title}
                     </h3>
@@ -488,7 +449,7 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
         {/* Specialists Grid */}
         <section id="specialists" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-8">
               <h2 className="text-3xl lg:text-5xl font-bold heading-font text-gray-900 mb-4">
                 Nos Spécialistes
               </h2>
@@ -511,7 +472,7 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
                       className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover mx-auto"
                     />
                     {specialist.available && (
-                      <div className="absolute top-0 right-1/4 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                      <div className="absolute top-12 right-24 sm:top-16 sm:right-20  w-4 h-4 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-white"></div>
                     )}
                   </div>
 
@@ -530,7 +491,7 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
                   </div>
 
                   <div className="text-center mb-4">
-                    <span className="text-xl sm:text-2xl font-bold text-gray-900">{specialist.price}</span>
+                    <span className="text-xm sm:text-xl font-bold text-gray-900">{specialist.price}</span>
                     <span className="text-gray-500 text-xs">/consultation</span>
                   </div>
 
@@ -548,7 +509,8 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl lg:text-5xl font-bold heading-font text-gray-900 mb-4">
-                Pourquoi Choisir Bookify?
+                Pourquoi Choisir 
+                <span className="text-gradient"> Bookify ?</span>
               </h2>
               <p className="text-lg sm:text-xl text-gray-600">
                 Une expérience de réservation simple et efficace
@@ -585,68 +547,23 @@ const servicesData: { [key: string]: Array<{ title: string; img: string }> } = {
             <p className="text-base sm:text-xl text-white/90 mb-6 sm:mb-8">
               Rejoignez des milliers de patients satisfaits et trouvez votre spécialiste dès aujourd'hui
             </p>
-            <button className="px-8 sm:px-12 py-3 sm:py-4 bg-white text-[#0059B2] rounded-full font-bold text-base sm:text-lg hover:shadow-2xl transition-all hover:scale-105">
+            <button
+              onClick={() => scrollToSection("Categories")}
+              className="px-8 sm:px-12 py-3 sm:py-4 bg-white text-[#0059B2] rounded-full font-bold text-base sm:text-lg hover:shadow-2xl transition-all hover:scale-105"
+            >
               Commencer Maintenant
               <ChevronRight className="inline ml-2" size={20} />
             </button>
+
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="bg-gray-900 text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-12">
-              <div className="col-span-2 md:col-span-1">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 gradient-animate rounded-xl flex items-center justify-center">
-                    <Calendar className="text-white" size={22} />
-                  </div>
-                  <span className="text-2xl font-bold heading-font">Bookify</span>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  La plateforme #1 de réservation de services au Maroc
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-bold mb-4 text-sm sm:text-base">Services</h4>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a href="#" className="hover:text-white transition-colors">Santé</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Beauté</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Artisanat</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Nettoyage</a></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold mb-4 text-sm sm:text-base">Company</h4>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a href="#" className="hover:text-white transition-colors">À propos</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Carrières</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold mb-4 text-sm sm:text-base">Support</h4>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a href="#" className="hover:text-white transition-colors">Centre d'aide</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Conditions</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">Confidentialité</a></li>
-                  <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center text-gray-400 text-sm">
-              <p>&copy; 2025 Bookify. Tous droits réservés.</p>
-            </div>
-          </div>
-        </footer>
+        <Footer/>
       </main>
     </div>
   );
 };
 
 export default Home;
+
+
+

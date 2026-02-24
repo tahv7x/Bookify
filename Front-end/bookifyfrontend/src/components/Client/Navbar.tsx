@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="p-9 border-b border-gray-100">
         {/* Logo - Top Left */}
         <div className="absolute left-[83px] top-8">  
-          <Link to="/Dashboard-Client">
+          <Link to="/Home-Client">
             <img
               src={logo}
               alt="Logo"

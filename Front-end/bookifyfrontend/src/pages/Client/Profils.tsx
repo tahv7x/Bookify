@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Dashboard/Navbar';
-import TopBar from '../../components/Dashboard/TopBar';
+import Navbar from '../../components/Client/Navbar';
+import TopBar from '../../components/Client/TopBar';
+
+import Footer from '../../components/Client/Footer';
 import {
   User, Settings, Star, Calendar, ChevronRight,
   Camera, Edit3, Mail, Phone, MapPin, Lock,
@@ -573,6 +575,7 @@ const Profils: React.FC = () => {
             )}
           </section>
         </div>
+        <Footer/>
       </main>
     </div>
   );

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\DELL\\Documents\\pfe\\DEV\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj": {}
   },
   "projects": {
@@ -12,12 +13,29 @@
         "projectPath": "C:\\Users\\DELL\\Documents\\pfe\\DEV\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\DELL\\Documents\\pfe\\DEV\\Bookify\\Back-end\\Bookify-API\\obj\\",
+=======
+    "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj",
+        "projectName": "Bookify-API",
+        "projectPath": "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj",
+        "packagesPath": "C:\\Users\\NEEKO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\obj\\",
+>>>>>>> 7667561 (Your message)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\NEEKO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 7667561 (Your message)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,13 +60,20 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
+<<<<<<< HEAD
           "auditMode": "all"
         },
         "SdkAnalysisLevel": "10.0.100"
+=======
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+>>>>>>> 7667561 (Your message)
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+<<<<<<< HEAD
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
@@ -77,6 +102,8 @@
               "version": "[9.0.0, )"
             }
           },
+=======
+>>>>>>> 7667561 (Your message)
           "imports": [
             "net461",
             "net462",
@@ -88,6 +115,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+<<<<<<< HEAD
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -511,6 +539,9 @@
             "System.Xml.XPath": "(,4.3.32767]",
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+>>>>>>> 7667561 (Your message)
         }
       }
     }

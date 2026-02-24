@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {  Calendar, MoreVertical, Upload, CheckCircle, Clock } from 'lucide-react';
-import Navbar from '../../components/Dashboard/Navbar';
-import TopBar from '../../components/Dashboard/TopBar';
-import StatsCard, { type StatsCardProps } from   '../../components/Dashboard/StatCard';
-
+import Navbar from '../../components/Client/Navbar';
+import TopBar from '../../components/Client/TopBar';
+import StatsCard, { type StatsCardProps } from   '../../components/Client/StatCard';
+import Footer from '../../components/Client/Footer';
 
 interface Appointment {
   name: string;
@@ -434,6 +434,7 @@ const DashboardClient: React.FC = () => {
             </div>
           </div>
         </div>
+        <Footer/>
       </main>
     </div>
   );

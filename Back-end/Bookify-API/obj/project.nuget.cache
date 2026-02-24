@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "zyOGcrxTuCw=",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\Documents\\pfe\\DEV\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj",
@@ -43,5 +44,11 @@
     "C:\\Users\\DELL\\.nuget\\packages\\system.composition.typedparts\\7.0.0\\system.composition.typedparts.7.0.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.0.1\\system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "JfeQcjWdqNg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\NEEKO\\Documents\\Project\\PFE\\Bookify\\Back-end\\Bookify-API\\Bookify-API.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 7667561 (Your message)
   "logs": []
 }

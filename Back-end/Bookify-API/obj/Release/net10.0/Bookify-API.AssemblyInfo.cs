@@ -12,13 +12,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bookify-API")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57c4740d59a3454f8065abe5fa6cf92c9418a514")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd6d9d203cc4232ff519bec6d9b00630c497ef01")]
->>>>>>> 7667561 (Your message)
 [assembly: System.Reflection.AssemblyProductAttribute("Bookify-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bookify-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
